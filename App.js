@@ -1,20 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect } from "react";
+import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+import AppNav from "./src/navigation/AppNav";
+import AuthProvider from "./src/contexts/AuthContext";
 
-export default function App() {
+const App = () => {
+  useEffect(() => {
+    SplashScreen.preventAutoHideAsync();
+    SplashScreen.hideAsync();
+  }, []);
+
+  let [fontsLoaded] = useFonts({
+    "Poppins-Bold": require("./assets/Poppins/Poppins-Bold.ttf"),
+    "Poppins-Light": require("./assets/Poppins/Poppins-Light.ttf"),
+    "Poppins-ExtraLight": require("./assets/Poppins/Poppins-ExtraLight.ttf"),
+    "Poppins-Italic": require("./assets/Poppins/Poppins-Italic.ttf"),
+    "Poppins-Black": require("./assets/Poppins/Poppins-Black.ttf"),
+    "Poppins-BlackItalic": require("./assets/Poppins/Poppins-BlackItalic.ttf"),
+    "Poppins-Regular": require("./assets/Poppins/Poppins-Regular.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <AuthProvider>
+      <AppNav />
+    </AuthProvider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

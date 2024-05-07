@@ -1,13 +1,14 @@
 {
   "expo": {
-    "name": "te",
-    "slug": "te",
+    "name": "tunisys",
+    "slug": "tunisys",
+    "main": "node_modules/expo/AppEntry.js",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/tun.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/auth.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,10 +22,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.donyessse.tunisys"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "8a2897d3-718c-4dd7-96a8-4ec3b7533898"
+      }
     }
   }
 }
